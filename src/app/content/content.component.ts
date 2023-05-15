@@ -22,7 +22,6 @@ export class ContentComponent implements OnInit {
   summary: string = '';
   iconURL: string = '';
 
-
   constructor(
     private weatherService: WeatherService,
   ) {}
