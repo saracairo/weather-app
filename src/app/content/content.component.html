@@ -1,0 +1,57 @@
+<main>
+
+  <section class="location">
+    <div class="date">{{ todayDate | date }}</div>
+    <div class="city">{{ cityName }}</div>
+  </section>
+
+  <section class="weather">
+
+    <img src="{{ iconURL }}" alt="weather image" />
+
+    <div class="temp">
+      {{ temperature | number: '1.0-0' }}<span>°</span>
+    </div>
+    <p class="summary">{{ summary }}</p>
+
+    <div class="hi-low">
+      <i class="bi bi-thermometer-snow" style="color: aqua;"></i> min {{ tempMin | number: '1.0-0' }}°
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="bi bi-thermometer-sun" style="color: orange;"></i> max {{ tempMax | number: '1.0-0' }}°
+    </div>
+
+    <div class="other-info">
+      <p>
+        <i class="bi bi-droplet" style="color: rgb(0, 204, 255);"></i>
+        &nbsp;humidity: {{ humidity }}
+      </p>
+      <p>
+        <i class="bi bi-wind" style="color: rgb(215, 215, 215)"></i>
+        &nbsp;wind: {{ wind }}
+      </p>
+      <p>
+        <i class="bi bi-tropical-storm" style="color: rgb(167, 167, 167);"></i>
+        &nbsp;pressure: {{ pressure }}
+      </p>
+      <p>
+        <i class="bi bi-thermometer-half" style="color: rgb(122, 255, 160)"></i>
+        &nbsp;feels like: {{ feelsLike | number: '1.0-0' }}°
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<header>
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text"
+      name="city"
+      placeholder="Search for a city..."
+      class="search-bar"
+      [(ngModel)]="cityName"
+    />
+    <button type="submit">
+      <i class="bi bi-search"></i>
+    </button>
+  </form>
+</header>

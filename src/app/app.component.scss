@@ -1,0 +1,8 @@
+@import 'src/styles.scss';
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3), rgba(32, 98, 101, 0.3));
+}
