@@ -5,12 +5,14 @@
   </section>
 
   <section class="weather">
-    <img src="{{ iconURL }}" alt="weather image" />
 
     <div class="temp">
       {{ temperature | number: '1.0-0' }}<span>°</span>
     </div>
-    <p class="summary">{{ summary }}</p>
+    <p class="summary">
+      {{ summary }}
+      <img src="{{ iconURL }}" alt="weather image" />
+    </p>
 
     <div class="hi-low">
       <i class="bi bi-thermometer-snow" style="color: aqua;"></i> min {{ tempMin | number: '1.0-0' }}°
@@ -42,12 +44,15 @@
 <header>
   <form #form="ngForm" (submit)="onSubmit()">
     <input type="text"
+      #searchInput
       name="city"
       placeholder="Search for a city..."
       class="search-bar"
       [(ngModel)]="cityName"
+      onfocus="this.value = ''"
     />
-    <button type="submit">
+    <button type="submit"
+      (click)="clearSearchInput()">
       <i class="bi bi-search"></i>
     </button>
   </form>

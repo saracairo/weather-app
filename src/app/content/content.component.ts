@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { WeatherService } from '../service/weather.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { WeatherService } from '../service/weather.service';
 })
 export class ContentComponent implements OnInit {
 
+  @ViewChild('searchInput') searchInput!: ElementRef;
   cityName: string = 'Northampton';
   units: string = 'metric';
   todayDate: Date = new Date();
@@ -55,6 +56,10 @@ export class ContentComponent implements OnInit {
       error: (error) => console.log(error.message),
       complete: () => console.info('API call completed')
     });
+  }
+
+  clearSearchInput() {
+    this.searchInput.nativeElement.value = '';
   }
 
 }
